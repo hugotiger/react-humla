@@ -35,7 +35,7 @@ export default function useArray<ArrType = any>(
   const clear = useCallback(() => setValue(() => []), []);
 
   // Resets the array to the initialvalue
-  const reset = useCallback(() => setValue(() => initialValue), []);
+  const reset = useCallback(() => setValue(() => initialValue), [initialValue]);
 
   // Removes an element by its index
   const remove = useCallback(
@@ -57,7 +57,7 @@ export default function useArray<ArrType = any>(
       reset,
       remove,
     }),
-    [push]
+    [push, pop, clear, reset, remove]
   );
 
   return { value, ...actions };
